@@ -4,7 +4,7 @@ Conjunto simples de estruturas de dados que podem trabalhar com qualquer tipo de
 ## Estruturas atualmente suportadas:
 - [x] Listas duplamente encadeadas.
 - [x] Filas encadeadas.
-- [ ] Pilhas estáticas.
+- [x] Pilhas _estáticas_.
 
 ## Compilação
 Use `make` para compilar as bibliotecas.

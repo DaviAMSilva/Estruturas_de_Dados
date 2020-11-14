@@ -14,7 +14,20 @@ inline fila_t CriarFila(size_t tamanho_dado)
 
 inline size_t QuantidadeItensFila(fila_t *fila)
 {
-	return fila->quantidade;
+	if (fila)
+		return fila->quantidade;
+	else
+		return 0;
+}
+
+
+
+inline void *ProximoItemFila(fila_t *fila)
+{
+	if (fila)
+		return fila->primeiro;
+	else
+		return NULL;
 }
 
 
@@ -26,7 +39,7 @@ bool LimparFila(fila_t *fila)
 
 
 
-	if (fila->primeiro == NULL)
+	if (fila == NULL || ptr == NULL)
 	{
 		return false;
 	}
@@ -65,7 +78,7 @@ itemF_t *InserirItemFila(fila_t *fila, void *dado)
 	itemF_t *novo_item = calloc(1, sizeof(itemF_t));
 	novo_item->dado = calloc(1, fila->tamanho_dado);
 
-	if (dado == NULL || novo_item == NULL || novo_item->dado == NULL)
+	if (fila == NULL || dado == NULL || novo_item == NULL || novo_item->dado == NULL)
 		return NULL;
 
 
@@ -102,7 +115,7 @@ bool RemoverItemFila(fila_t *fila)
 {
 	itemF_t *primeiro = fila->primeiro;
 
-	if (fila->primeiro == NULL)
+	if (fila == NULL || fila->primeiro == NULL)
 		return NULL;
 
 
@@ -135,20 +148,18 @@ bool AtravessarFila(fila_t *fila, bool (*func)(void *dado, size_t index))
 
 
 
-	if (ptr == NULL)
-	{
+	if (fila == NULL || ptr == NULL || func == NULL)
 		return false;
-	}
-	else
-	{
-		while (ptr)
-		{
-			if (func(ptr->dado, index) == false)
-				return false;
 
-			ptr = ptr->proximo;
-			index++;
-		}
+
+
+	while (ptr)
+	{
+		if (func(ptr->dado, index) == false)
+			return false;
+
+		ptr = ptr->proximo;
+		index++;
 	}
 
 

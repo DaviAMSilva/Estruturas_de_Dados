@@ -18,10 +18,10 @@ dirs: $(DIRS)
 
 
 build/%.o: source/%.c include/%.h | $(DIRS)
-	gcc -c $< -Wall -o $@ -I include/
+	gcc -c $< -Wall -O3 -o $@ -I include/
 
 lib/lib%.a: build/%.o | $(DIRS)
-	ar -cvq $@ $<
+	ar -cvr $@ $<
 
 
 

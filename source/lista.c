@@ -14,7 +14,10 @@ inline lista_t CriarLista(size_t tamanho_dado)
 
 inline size_t QuantidadeItensLista(lista_t *lista)
 {
-	return lista->quantidade;
+	if (lista)
+		return lista->quantidade;
+	else
+		return 0;
 }
 
 
@@ -26,7 +29,7 @@ bool LimparLista(lista_t *lista)
 
 
 
-	if (lista->primeiro == NULL)
+	if (lista == NULL || lista->primeiro == NULL)
 		return false;
 
 
@@ -65,7 +68,7 @@ itemL_t *InserirInicioLista(lista_t *lista, void *dado)
 
 
 
-	if (dado == NULL || novo_item == NULL || novo_item->dado == NULL)
+	if (lista == NULL || dado == NULL || novo_item == NULL || novo_item->dado == NULL)
 		return NULL;
 
 
@@ -102,7 +105,7 @@ itemL_t *InserirFinalLista(lista_t *lista, void *dado)
 
 
 
-	if (dado == NULL || novo_item == NULL || novo_item->dado == NULL)
+	if (lista == NULL || dado == NULL || novo_item == NULL || novo_item->dado == NULL)
 		return NULL;
 
 
@@ -139,14 +142,14 @@ itemL_t *InserirFinalLista(lista_t *lista, void *dado)
 
 
 
-bool RemoverPrimeiroLista(lista_t *lista)
+inline bool RemoverPrimeiroLista(lista_t *lista)
 {
 	return RemoverItemLista(lista, lista->primeiro);
 }
 
 
 
-bool RemoverUltimoLista(lista_t *lista)
+inline bool RemoverUltimoLista(lista_t *lista)
 {
 	return RemoverItemLista(lista, lista->ultimo);
 }
@@ -166,7 +169,7 @@ bool RemoverUltimoLista(lista_t *lista)
  */
 bool RemoverItemLista(lista_t *lista, itemL_t *item)
 {
-	if (item == NULL || lista->primeiro == NULL)
+	if (lista == NULL || item == NULL || lista->primeiro == NULL)
 		return false;
 
 
@@ -211,7 +214,7 @@ bool AtravessarListaNormal(lista_t *lista, bool (*func)(void *dado, size_t index
 
 
 
-	if (ptr == NULL)
+	if (lista == NULL || ptr == NULL || func == NULL)
 		return false;
 
 
@@ -239,7 +242,7 @@ bool AtravessarListaContrario(lista_t *lista, bool (*func)(void *dado, size_t in
 
 
 
-	if (ptr == NULL)
+	if (lista == NULL || ptr == NULL || func == NULL)
 		return false;
 
 

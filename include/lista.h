@@ -13,11 +13,11 @@
 
 
 /**
- * Estrutura que armazena os detalhes de um item da lista
+ * Estrutura que armazena os detalhes de um item da lista.
  * 
- * "proximo": Ponteiro para o proximo item da lista
- * "anterior": Ponteiro para o item anterior da lista
- * "dado": Ponteiro para onde a informação será realmente armazenada
+ * \param proximo: Ponteiro para o próximo item da lista.
+ * \param anterior: Ponteiro para o item anterior da lista.
+ * \param dado: Ponteiro para onde a informação será realmente armazenada.
  */
 typedef struct ItemL
 {
@@ -27,14 +27,15 @@ typedef struct ItemL
 } itemL_t;
 
 
+
 /**
- * Estrutura que armazena os detalhes de uma lista
+ * Estrutura que armazena os detalhes de uma lista.
  * 
- * "primeiro": Ponteiro para o primeiro item da lista
- * "ultimo": Ponteiro para o último item da lista
- * "quantidade": Quantidade de itens armazenados na lista
- * "tamanho_dado": Tamanho em bytes da informação que é armazenada em cada item da lista.
- * Esse tamanho não pode ser alterado após a lista ser criada
+ * \param primeiro: Ponteiro para o primeiro item da lista.
+ * \param ultimo: Ponteiro para o último item da lista.
+ * \param quantidade: Guarda a quantidade de itens na lista.
+ * \param tamanho_dado: Tamanho em bytes da informação que é armazenada em cada item da lista.
+ * Esse tamanho não pode ser alterado após a lista ser criada.
  */
 typedef struct Lista
 {
@@ -54,11 +55,11 @@ typedef struct Lista
 
 
 /**
- * \brief Criar e retorna uma lista duplamente encadeada. 
+ * Criar e retorna uma lista duplamente encadeada. 
  * 
- * \param tamanho_dado Representa o tamanho em bytes do tipo de dados que será usado poressa lista. 
+ * \param tamanho_dado Representa o tamanho em bytes do tipo de dados que será usado por essa lista. 
  * O comportamento é indefinido para tamanhos menores ou iguais a zero. 
- * Ele parâmetro é constante para cada lista e não pode ser alterado. 
+ * Esse tamanho é constante para cada lista e não pode ser alterado. 
  * 
  * \returns Uma estrutura de uma lista. 
  */
@@ -67,16 +68,16 @@ lista_t CriarLista(size_t tamanho_dado);
 
 
 /**
- * \param lista Ponteiro para a lista em questão. 
+ * \param lista Ponteiro para a lista em questão.
  * 
- * \returns A quantidade de itens atualmente presentes na lista. 
+ * \returns A quantidade de itens atualmente presentes na lista.
  */
 size_t QuantidadeItensLista(lista_t *lista);
 
 
 
 /**
- * \brief Libera todos os itens da memória e os apaga da lista. 
+ * Libera todos os itens da memória e os apaga da lista. 
  * O resultado será uma lista vazia que ainda pode ser reusada. 
  * 
  * \param lista Ponteiro para a lista em questão. 
@@ -95,7 +96,7 @@ bool LimparLista(lista_t *lista);
 
 
 /**
- * \brief Insere um novo elemento no início da lista. 
+ * Insere um novo elemento no início da lista. 
  * A informação salva é uma cópia da infomação passada na função. 
  * O tamanho da cópia é determinado pelo tamanho do dado especificado na hora da criação da função. 
  * 
@@ -109,7 +110,7 @@ itemL_t *InserirInicioLista(lista_t *lista, void *dado);
 
 
 /**
- * \brief Insere um novo elemento no final da lista. 
+ * Insere um novo elemento no final da lista. 
  * A informação salva é uma cópia da infomação passada na função. 
  * O tamanho da cópia é determinado pelo tamanho do dado especificado na hora da criação da função. 
  * 
@@ -130,7 +131,7 @@ itemL_t *InserirFinalLista(lista_t *lista, void *dado);
 
 
 /**
- * \brief Libera a memória do primeiro item e o remove da lista. 
+ * Libera a memória do primeiro item e o remove da lista. 
  * 
  * \param lista Ponteiro para a lista em questão. 
  * 
@@ -141,7 +142,7 @@ bool RemoverPrimeiroLista(lista_t *lista);
 
 
 /**
- * \brief Libera a memória do último item e o remove da lista. 
+ * Libera a memória do último item e o remove da lista. 
  * 
  * \param lista Ponteiro para a lista em questão. 
  * 
@@ -152,7 +153,7 @@ bool RemoverUltimoLista(lista_t *lista);
 
 
 /**
- * \brief Libera a memória do item especificado e o remove da lista. 
+ * Libera a memória do item especificado e o remove da lista. 
  * 
  * \param lista Ponteiro para a lista em questão. 
  * \param item Ponteiro para o item em questão. 
@@ -171,12 +172,12 @@ bool RemoverItemLista(lista_t *lista, itemL_t *item);
 
 
 /**
- * \brief Executa a função especificada para todos os itens da lista. Vai do primeiro item ao último. 
+ * Executa a função especificada para todos os itens da lista. Vai do primeiro item ao último. 
  * 
  * \param lista Ponteiro para a lista em questão. 
  * \param func Função que será executada para cada item da lista. 
  * Essa função recebe o dado de um item e a numeração daquele item (começando por zero). 
- * A função deve retornar true se deseja que a travessia continue, ou false se deseja que ele pare. 
+ * A função deve retornar true se deseja que a travessia continue, ou false se deseja que ela pare. 
  * 
  * \returns true se houve sucesso, false senão. 
  */
@@ -185,12 +186,12 @@ bool AtravessarListaNormal(lista_t *lista, bool (*func)(void *dado, size_t index
 
 
 /**
- * \brief Executa a função especificada para todos os itens da lista. Vai do último item ao primeiro. 
+ * Executa a função especificada para todos os itens da lista. Vai do último item ao primeiro. 
  * 
  * \param lista Ponteiro para a lista em questão. 
  * \param func Função que será executada para cada item da lista. 
  * Essa função recebe o dado de um item e a numeração daquele item (começando por zero). 
- * A função deve retornar true se deseja que a travessia continue, ou false se deseja que ele pare. 
+ * A função deve retornar true se deseja que a travessia continue, ou false se deseja que ela pare. 
  * 
  * \returns true se houve sucesso, false senão. 
  */

@@ -13,10 +13,10 @@
 
 
 /**
- * Estrutura que armazena os detalhes de um item da fila
+ * Estrutura que armazena os detalhes de um item da fila.
  * 
- * \param proximo: Ponteiro para o proximo item da fila
- * \param dado: Ponteiro para onde a informação será realmente armazenada
+ * \param proximo: Ponteiro para o próximo item da fila.
+ * \param dado: Ponteiro para onde a informação será realmente armazenada.
  */
 typedef struct ItemF
 {
@@ -25,13 +25,15 @@ typedef struct ItemF
 } itemF_t;
 
 
+
 /**
- * Estrutura que armazena os detalhes de uma fila
+ * Estrutura que armazena os detalhes de uma fila.
  * 
- * \param primeiro: Ponteiro para o primeiro item da fila
- * \param ultimo: Ponteiro para o último item da fila
+ * \param primeiro: Ponteiro para o primeiro item da fila.
+ * \param ultimo: Ponteiro para o último item da fila.
+ * \param quantidade: Guarda a quantidade de itens na fila.
  * \param tamanho_dado: Tamanho em bytes da informação que é armazenada em cada item da fila.
- * Esse tamanho não pode ser alterado após a fila ser criada
+ * Esse tamanho não pode ser alterado após a fila ser criada.
  */
 typedef struct Fila
 {
@@ -51,11 +53,11 @@ typedef struct Fila
 
 
 /**
- * \brief Criar e retorna uma fila. 
+ * Criar e retorna uma fila. 
  * 
- * \param tamanho_dado Representa o tamanho em bytes do tipo de dados que será usado poressa fila. 
+ * \param tamanho_dado Representa o tamanho em bytes do tipo de dados que será usado por essa fila. 
  * O comportamento é indefinido para tamanhos menores ou iguais a zero. 
- * Ele parâmetro é constante para cada fila e não pode ser alterado. 
+ * Esse tamanho é constante para cada fila e não pode ser alterado. 
  * 
  * \returns Uma estrutura de uma fila. 
  */
@@ -64,16 +66,25 @@ fila_t CriarFila(size_t tamanho_dado);
 
 
 /**
- * \param lista Ponteiro para a lista em questão. 
+ * \param fila Ponteiro para a fila em questão.
  * 
- * \returns A quantidade de itens atualmente presentes na lista. 
+ * \returns A quantidade de itens atualmente presentes na fila.
  */
 size_t QuantidadeItensFila(fila_t *fila);
 
 
 
 /**
- * \brief Libera todos os itens da memória e os apaga da fila. 
+ * \param fila Ponteiro para a fila em questão. 
+ * 
+ * \returns Ponteiro para o dado do próximo item da fila (primeiro).
+ */
+void *ProximoItemFila(fila_t *fila);
+
+
+
+/**
+ * Libera todos os itens da memória e os apaga da fila. 
  * O resultado será uma fila vazia que ainda pode ser reusada. 
  * 
  * \param fila Ponteiro para a fila em questão. 
@@ -92,7 +103,7 @@ bool LimparFila(fila_t *fila);
 
 
 /**
- * \brief Insere um novo elemento no final da fila. 
+ * Insere um novo elemento no final da fila. 
  * A informação salva é uma cópia da infomação passada na função. 
  * O tamanho da cópia é determinado pelo tamanho do dado especificado na hora da criação da função. 
  * 
@@ -105,8 +116,15 @@ itemF_t *InserirItemFila(fila_t *fila, void *dado);
 
 
 
+
+
+
+
+
+
+
 /**
- * \brief Libera a memória do primeiro item e o remove da fila. 
+ * Libera a memória do primeiro item e o remove da fila. 
  * 
  * \param fila Ponteiro para a fila em questão. 
  * 
@@ -124,12 +142,12 @@ bool RemoverItemFila(fila_t *fila);
 
 
 /**
- * \brief Executa a função especificada para todos os itens da fila. Vai do primeiro item ao último. 
+ * Executa a função especificada para todos os itens da fila. Vai do primeiro item ao último. 
  * 
  * \param fila Ponteiro para a fila em questão. 
  * \param func Função que será executada para cada item da fila. 
  * Essa função recebe o dado de um item e a numeração daquele item (começando por zero). 
- * A função deve retornar true se deseja que a travessia continue, ou false se deseja que ele pare. 
+ * A função deve retornar true se deseja que a travessia continue, ou false se deseja que ela pare. 
  * 
  * \returns true se houve sucesso, false senão. 
  */
