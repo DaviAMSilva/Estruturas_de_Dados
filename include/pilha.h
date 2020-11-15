@@ -34,7 +34,7 @@
 
 
 
-typedef	void *itemP_t;
+typedef	void itemP_t;
 
 
 
