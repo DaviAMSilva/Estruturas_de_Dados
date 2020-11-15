@@ -21,7 +21,7 @@ build/%.o: source/%.c include/%.h | $(DIRS)
 	gcc -c $< -Wall -O3 -o $@ -I include/
 
 lib/lib%.a: build/%.o | $(DIRS)
-	ar -cvr $@ $<
+	ar cr $@ $<
 
 
 
