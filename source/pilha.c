@@ -26,9 +26,9 @@ inline size_t QuantidadeItensPilha(pilha_t *pilha)
 
 
 
-inline itemP_t *ProximoItemPilha(pilha_t *pilha)
+itemP_t *ProximoItemPilha(pilha_t *pilha)
 {
-	if (pilha->quantidade < 0 || pilha->itens == NULL)
+	if (pilha == NULL || pilha->itens == NULL || pilha->quantidade < 0)
 		return NULL;
 	else
 		return pilha->itens + pilha->topo * pilha->tamanho_dado;
@@ -156,7 +156,7 @@ bool AtravessarPilhaContrario(pilha_t *pilha, bool (*func)(void *dado, size_t in
 
 
 
-	for (int i = pilha->topo; i <= 0; i--)
+	for (int i = pilha->topo; i >= 0; i--)
 	{
 		if (func(pilha->itens + i * pilha->tamanho_dado, i) == false)
 			return false;

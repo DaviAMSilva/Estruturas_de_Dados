@@ -35,14 +35,14 @@ typedef struct ItemL
  * \param ultimo: Ponteiro para o último item da lista.
  * \param quantidade: Guarda a quantidade de itens na lista.
  * \param tamanho_dado: Tamanho em bytes da informação que é armazenada em cada item da lista.
- * Esse tamanho não pode ser alterado após a lista ser criada.
+ * Esse tamanho não deve alterado após a lista ser criada.
  */
 typedef struct Lista
 {
 	itemL_t *primeiro;
 	itemL_t *ultimo;
 	size_t quantidade;
-	const size_t tamanho_dado;
+	size_t tamanho_dado;
 } lista_t;
 
 
@@ -59,7 +59,7 @@ typedef struct Lista
  * 
  * \param tamanho_dado Representa o tamanho em bytes do tipo de dados que será usado por essa lista. 
  * O comportamento é indefinido para tamanhos menores ou iguais a zero. 
- * Esse tamanho é constante para cada lista e não pode ser alterado. 
+ * Esse tamanho é único para cada lista e não deve alterado. 
  * 
  * \returns Uma estrutura de uma lista. 
  */

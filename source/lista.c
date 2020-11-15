@@ -93,7 +93,11 @@ itemL_t *InserirInicioLista(lista_t *lista, void *dado)
 
 
 
-	return memcpy(novo_item->dado, dado, lista->tamanho_dado);
+	memcpy(novo_item->dado, dado, lista->tamanho_dado);
+
+
+
+	return novo_item;
 }
 
 
@@ -130,7 +134,11 @@ itemL_t *InserirFinalLista(lista_t *lista, void *dado)
 
 
 
-	return memcpy(novo_item->dado, dado, lista->tamanho_dado);	
+	memcpy(novo_item->dado, dado, lista->tamanho_dado);
+
+
+
+	return novo_item;
 }
 
 

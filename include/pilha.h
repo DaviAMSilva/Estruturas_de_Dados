@@ -43,17 +43,17 @@ typedef	void itemP_t;
  * 
  * \param itens: Ponteiro para os itens da pilha. 
  * \param tamanho_dado: Tamanho em bytes da informação que é armazenada em cada item da pilha. 
- * Esse tamanho não pode ser alterado após a pilha ser criada. 
+ * Esse tamanho não deve alterado após a pilha ser criada. 
  * \param quantidade_maxima: Quantidade máxima de elementos permitidos na pilha. 
- * Essa quantidade não pode ser alterado após a pilha ser criada. 
+ * Essa quantidade não deve alterado após a pilha ser criada. 
  * \param quantidade: Guarda a quantidade de itens na pilha. 
  * \param topo: Guarda a posição do item mais acima da pilha. 
  */
 typedef struct Pilha
 {
 	itemP_t *itens;
-	const size_t tamanho_dado;
-	const size_t quantidade_maxima;
+	size_t tamanho_dado;
+	size_t quantidade_maxima;
 	size_t quantidade;
 	long topo;
 } pilha_t;

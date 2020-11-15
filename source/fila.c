@@ -22,7 +22,7 @@ inline size_t QuantidadeItensFila(fila_t *fila)
 
 
 
-inline void *ProximoItemFila(fila_t *fila)
+inline itemF_t *ProximoItemFila(fila_t *fila)
 {
 	if (fila)
 		return fila->primeiro;
@@ -99,7 +99,13 @@ itemF_t *InserirItemFila(fila_t *fila, void *dado)
 
 	fila->quantidade++;
 
-	return memcpy(novo_item->dado, dado, fila->tamanho_dado);	
+
+
+	memcpy(novo_item->dado, dado, fila->tamanho_dado);
+
+
+
+	return novo_item;	
 }
 
 

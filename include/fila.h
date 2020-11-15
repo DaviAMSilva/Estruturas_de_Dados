@@ -33,14 +33,14 @@ typedef struct ItemF
  * \param ultimo: Ponteiro para o último item da fila.
  * \param quantidade: Guarda a quantidade de itens na fila.
  * \param tamanho_dado: Tamanho em bytes da informação que é armazenada em cada item da fila.
- * Esse tamanho não pode ser alterado após a fila ser criada.
+ * Esse tamanho não deve alterado após a fila ser criada.
  */
 typedef struct Fila
 {
 	itemF_t *primeiro;
 	itemF_t *ultimo;
 	size_t quantidade;
-	const size_t tamanho_dado;
+	size_t tamanho_dado;
 } fila_t;
 
 
@@ -57,7 +57,7 @@ typedef struct Fila
  * 
  * \param tamanho_dado Representa o tamanho em bytes do tipo de dados que será usado por essa fila. 
  * O comportamento é indefinido para tamanhos menores ou iguais a zero. 
- * Esse tamanho é constante para cada fila e não pode ser alterado. 
+ * Esse tamanho é único para cada fila e não deve alterado. 
  * 
  * \returns Uma estrutura de uma fila. 
  */
@@ -79,7 +79,7 @@ size_t QuantidadeItensFila(fila_t *fila);
  * 
  * \returns Ponteiro para o dado do próximo item da fila (primeiro).
  */
-void *ProximoItemFila(fila_t *fila);
+itemF_t *ProximoItemFila(fila_t *fila);
 
 
 
