@@ -122,7 +122,7 @@ bool RemoverItemFila(fila_t *fila)
 	itemF_t *primeiro = fila->primeiro;
 
 	if (fila == NULL || fila->primeiro == NULL)
-		return NULL;
+		return false;
 
 
 
