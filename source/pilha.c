@@ -34,6 +34,11 @@ itemP_t *ProximoItemPilha(pilha_t *pilha)
 		return pilha->itens + pilha->topo * pilha->tamanho_dado;
 }
 
+inline itemP_t *TopoPilha(pilha_t *pilha)
+{
+	return ProximoItemPilha(pilha);
+}
+
 
 
 bool LimparPilha(pilha_t *pilha)
@@ -96,6 +101,11 @@ itemP_t *InserirItemPilha(pilha_t *pilha, void *dado)
 	return memcpy(pilha->itens + pilha->topo * pilha->tamanho_dado, dado, pilha->tamanho_dado);
 }
 
+inline itemP_t *PushPilha(pilha_t *pilha, void *dado)
+{
+	return InserirItemPilha(pilha, dado);
+}
+
 
 
 
@@ -118,6 +128,11 @@ bool RemoverItemPilha(pilha_t *pilha)
 
 
 	return true;
+}
+
+inline bool PopPilha(pilha_t *pilha)
+{
+	return RemoverItemPilha(pilha);
 }
 
 

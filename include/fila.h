@@ -33,7 +33,6 @@ typedef struct ItemF
  * \param ultimo: Ponteiro para o último item da fila.
  * \param quantidade: Guarda a quantidade de itens na fila.
  * \param tamanho_dado: Tamanho em bytes da informação que é armazenada em cada item da fila.
- * Esse tamanho não deve alterado após a fila ser criada.
  */
 typedef struct Fila
 {

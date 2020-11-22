@@ -11,6 +11,21 @@
 
 
 
+/**
+ * Tipos de lista que podem existir
+ * 
+ * \param LISTA_SIMPLES: Lista duplamente encadeada
+ * \param LISTA_CIRCULAR: Lista duplamente encadeada circular
+ */
+typedef enum TipoLista
+{
+	LISTA_SIMPLES,
+	LISTA_CIRCULAR,
+} tipoLista_t;
+
+
+
+
 
 /**
  * Estrutura que armazena os detalhes de um item da lista.
@@ -35,7 +50,7 @@ typedef struct ItemL
  * \param ultimo: Ponteiro para o último item da lista.
  * \param quantidade: Guarda a quantidade de itens na lista.
  * \param tamanho_dado: Tamanho em bytes da informação que é armazenada em cada item da lista.
- * Esse tamanho não deve alterado após a lista ser criada.
+ * \param tipo_lista: Define se a lista é simples ou circular. 
  */
 typedef struct Lista
 {
@@ -43,6 +58,7 @@ typedef struct Lista
 	itemL_t *ultimo;
 	size_t quantidade;
 	size_t tamanho_dado;
+	tipoLista_t tipo_lista;
 } lista_t;
 
 
@@ -55,15 +71,18 @@ typedef struct Lista
 
 
 /**
- * Criar e retorna uma lista duplamente encadeada. 
+ * Criar e retorna uma lista, podendo ser duplamente encadeada simples ou circular. 
  * 
  * \param tamanho_dado Representa o tamanho em bytes do tipo de dados que será usado por essa lista. 
- * O comportamento é indefinido para tamanhos menores ou iguais a zero. 
  * Esse tamanho é único para cada lista e não deve alterado. 
+ * O comportamento é indefinido para tamanhos menores ou iguais a zero. 
+ * \param tipo_lista Define se a lista será simples ou circular. 
+ * Esse tipo é único para cada lista e não deve alterado. 
+ * O comportamento é indefinido para tipos diferentes dos esperados. 
  * 
  * \returns Uma estrutura de uma lista. 
  */
-lista_t CriarLista(size_t tamanho_dado);
+lista_t CriarLista(size_t tamanho_dado, tipoLista_t tipo_lista);
 
 
 

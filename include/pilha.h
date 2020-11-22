@@ -17,23 +17,6 @@
 
 
 
-/**
- * Alguns defines com nomes mais convencionais paras essas funções
- */
-
-#define PushPilha	InserirItemPilha
-#define PopPilha	RemoverItemPilha
-#define TopoPilha	ProximoItemPilha
-
-
-
-
-
-
-
-
-
-
 typedef	void itemP_t;
 
 
@@ -43,9 +26,7 @@ typedef	void itemP_t;
  * 
  * \param itens: Ponteiro para os itens da pilha. 
  * \param tamanho_dado: Tamanho em bytes da informação que é armazenada em cada item da pilha. 
- * Esse tamanho não deve alterado após a pilha ser criada. 
  * \param quantidade_maxima: Quantidade máxima de elementos permitidos na pilha. 
- * Essa quantidade não deve alterado após a pilha ser criada. 
  * \param quantidade: Guarda a quantidade de itens na pilha. 
  * \param topo: Guarda a posição do item mais acima da pilha. 
  */
@@ -98,6 +79,13 @@ size_t QuantidadeItensPilha(pilha_t *pilha);
  */
 itemP_t *ProximoItemPilha(pilha_t *pilha);
 
+/**
+ * \param pilha Ponteiro para a pilha em questão. 
+ * 
+ * \returns Ponteiro para o dado do próximo item da pilha (topo). 
+ */
+itemP_t *TopoPilha(pilha_t *pilha);
+
 
 
 /**
@@ -143,6 +131,18 @@ bool DestruirPilha(pilha_t *pilha);
  */
 itemP_t *InserirItemPilha(pilha_t *pilha, void *dado);
 
+/**
+ * Insere um novo elemento no topo da pilha. 
+ * A informação salva é uma cópia da infomação passada na função. 
+ * O tamanho da cópia é determinado pelo tamanho do dado especificado na hora da criação da função. 
+ * 
+ * \param pilha Ponteiro para a pilha em questão. 
+ * \param dado Ponteiro para o local em que a informação está localizada. 
+ * 
+ * \returns ponteiro para o item inserido. 
+ */
+itemP_t *PushPilha(pilha_t *pilha, void *dado);
+
 
 
 
@@ -160,6 +160,15 @@ itemP_t *InserirItemPilha(pilha_t *pilha, void *dado);
  * \returns true se houve sucesso, false senão. 
  */
 bool RemoverItemPilha(pilha_t *pilha);
+
+/**
+ * Remove o item no topo da pilha. 
+ * 
+ * \param pilha Ponteiro para a pilha em questão. 
+ * 
+ * \returns true se houve sucesso, false senão. 
+ */
+bool PopPilha(pilha_t *pilha);
 
 
 

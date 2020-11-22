@@ -5,9 +5,9 @@
 
 
 
-inline lista_t CriarLista(size_t tamanho_dado)
+inline lista_t CriarLista(size_t tamanho_dado, tipoLista_t tipo_lista)
 {
-	return (lista_t) { NULL, NULL, 0, tamanho_dado };
+	return (lista_t) { NULL, NULL, 0, tamanho_dado, tipo_lista };
 }
 
 
@@ -34,13 +34,32 @@ bool LimparLista(lista_t *lista)
 
 
 
-	while (ptr)
+	if (lista->tipo_lista == LISTA_SIMPLES)
 	{
-		proximo = ptr->proximo;
-		free(ptr->dado);
-		free(ptr);
-		ptr = proximo;
+		while (ptr)
+		{
+			proximo = ptr->proximo;
+			free(ptr->dado);
+			free(ptr);
+			ptr = proximo;
+		}
 	}
+	else if (lista->tipo_lista == LISTA_CIRCULAR)
+	{
+		do
+		{
+			proximo = ptr->proximo;
+			free(ptr->dado);
+			free(ptr);
+			ptr = proximo;
+		}
+		while (ptr != lista->primeiro && ptr != NULL);
+	}
+	else
+	{
+		return false;
+	}
+
 
 
 
@@ -89,6 +108,14 @@ itemL_t *InserirInicioLista(lista_t *lista, void *dado)
 
 
 
+	if (lista->tipo_lista == LISTA_CIRCULAR)
+	{
+		if (lista->ultimo)		lista->ultimo->proximo		= lista->primeiro;
+		if (lista->primeiro)	lista->primeiro->anterior	= lista->ultimo;
+	}
+
+
+
 	lista->quantidade++;
 
 
@@ -126,6 +153,14 @@ itemL_t *InserirFinalLista(lista_t *lista, void *dado)
 		novo_item->anterior = lista->ultimo;
 		lista->ultimo->proximo = novo_item;
 		lista->ultimo = novo_item;
+	}
+
+
+
+	if (lista->tipo_lista == LISTA_CIRCULAR)
+	{
+		if (lista->ultimo)		lista->ultimo->proximo		= lista->primeiro;
+		if (lista->primeiro)	lista->primeiro->anterior	= lista->ultimo;
 	}
 
 
